@@ -44,7 +44,12 @@ export function DayControlPanel() {
     <div className="flex flex-col gap-4">
       <Card className="glass-card border-0 shadow-none">
         <CardContent className="space-y-4 p-5">
-          <p className="text-sm font-semibold text-on-surface">Plánování dne</p>
+          <div>
+            <p className="text-label-caps">rozvrh</p>
+            <p className="mt-1 text-sm font-semibold text-on-surface">
+              Optimalizace dne
+            </p>
+          </div>
           <p className="text-body-sm leading-relaxed text-on-surface-variant">
             Úkoly z backlogu se do kalendáře dostanou až po optimalizaci. Návyky se
             zařadí podle preferovaného času.
@@ -52,7 +57,7 @@ export function DayControlPanel() {
 
           {backlogCount > 0 && !hasSchedule && (
             <p className="rounded-md border border-secondary/30 bg-secondary/10 px-3 py-2 text-body-sm text-secondary">
-              Máte {backlogCount} {backlogCount === 1 ? "úkol" : "úkolů"} čekajících
+              {backlogCount} {backlogCount === 1 ? "úkol" : "úkolů"} čeká
               v backlogu — spusťte optimalizaci.
             </p>
           )}
@@ -86,7 +91,7 @@ export function DayControlPanel() {
 
       <Card className="glass-card border-0 shadow-none">
         <CardContent className="space-y-3 p-4">
-          <p className="text-sm font-semibold text-on-surface">Preference</p>
+          <p className="text-label-caps">preference</p>
           <div className="flex justify-between text-body-sm">
             <span className="text-on-surface-variant">Cíl hodin</span>
             <span className="text-mono-data font-medium">{p.dailyTargetWorkHours}h</span>

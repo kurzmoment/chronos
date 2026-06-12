@@ -6,8 +6,8 @@ const Select = React.forwardRef<HTMLSelectElement, React.ComponentProps<"select"
     <select
       ref={ref}
       className={cn(
-        "flex h-10 w-full rounded-sm border border-outline-variant/60 bg-surface-lowest px-3 text-sm text-on-surface transition-colors",
-        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-solid/60 focus-visible:border-primary-solid/50",
+        "flex h-10 w-full rounded-lg border border-[var(--glass-border)] bg-surface-low/70 px-3 text-sm text-on-surface backdrop-blur-sm transition-all",
+        "focus-visible:border-secondary/60 focus-visible:bg-surface-container/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary/25",
         "disabled:cursor-not-allowed disabled:opacity-50",
         className
       )}

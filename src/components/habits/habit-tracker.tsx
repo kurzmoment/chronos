@@ -50,7 +50,7 @@ export function HabitTracker() {
   }
 
   return (
-    <Card className="flex h-full flex-col">
+    <Card className="mission-section flex h-full flex-col border-0 shadow-none">
       <CardHeader className="flex flex-row items-center justify-between pb-3">
         <SectionLabel>Návyky</SectionLabel>
         <Button size="icon" variant="ghost" onClick={() => setShowForm(!showForm)}>
@@ -61,7 +61,7 @@ export function HabitTracker() {
         {showForm && (
           <form
             onSubmit={handleCreate}
-            className="space-y-3 rounded-sm border border-surface-high bg-surface-low p-3"
+            className="space-y-3 rounded-lg border border-[var(--glass-border)] bg-surface-low/70 p-3"
           >
             <div className="space-y-2">
               <Label>Název návyku</Label>
@@ -119,7 +119,7 @@ export function HabitTracker() {
                   onChange={() =>
                     toggleCompletion({ habitId: habit._id, date: selectedDate })
                   }
-                  className="h-4 w-4 rounded-sm border-outline-variant bg-surface-lowest text-primary-solid focus:ring-primary-solid/50"
+                  className="h-4 w-4 rounded border-outline-variant bg-surface-lowest text-secondary focus:ring-secondary/50"
                 />
                 <div className="min-w-0 flex-1">
                   <p

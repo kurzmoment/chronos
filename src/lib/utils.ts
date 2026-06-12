@@ -19,6 +19,6 @@ export function formatTime(iso: string): string {
   });
 }
 
-export const CALENDAR_START_HOUR = 6;
-export const CALENDAR_END_HOUR = 22;
+export const CALENDAR_START_HOUR = 0;
+export const CALENDAR_END_HOUR = 24;
 export const SLOT_MINUTES = 15;

@@ -1,7 +1,7 @@
 "use client";
 
 import { useMutation, useQuery } from "convex/react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Plus, Trash2 } from "lucide-react";
 import { api } from "convex/_generated/api";
 import type { Doc, Id } from "convex/_generated/dataModel";
@@ -31,9 +31,15 @@ export function ProjectNotesTab({ projectId }: { projectId: Id<"projects"> }) {
   }
 
   return (
-    <div className="grid gap-4 lg:grid-cols-[240px_1fr]">
-      <Card className="glass-card border-0 shadow-none">
+    <div className="grid gap-4 lg:grid-cols-[280px_1fr]">
+      <Card className="mission-section border-0 shadow-none">
         <CardContent className="space-y-2 p-4">
+          <div>
+            <p className="section-kicker">poznámky</p>
+            <h2 className="mt-1 text-base font-bold text-on-surface">
+              Projektové poznámky
+            </h2>
+          </div>
           <div className="flex gap-2">
             <Input
               value={newTitle}
@@ -51,7 +57,7 @@ export function ProjectNotesTab({ projectId }: { projectId: Id<"projects"> }) {
                 <button
                   type="button"
                   onClick={() => setSelectedId(note._id)}
-                  className={`w-full rounded-md px-2 py-1.5 text-left text-sm ${
+                  className={`w-full rounded-md px-3 py-2 text-left text-sm ${
                     selected?._id === note._id
                       ? "bg-secondary/15 text-on-surface"
                       : "text-on-surface-variant hover:bg-surface-container/50"
@@ -67,6 +73,7 @@ export function ProjectNotesTab({ projectId }: { projectId: Id<"projects"> }) {
 
       {selected ? (
         <NoteEditor
+          key={selected._id}
           note={selected}
           onUpdate={(patch) => update({ id: selected._id, ...patch })}
           onRemove={() => {
@@ -93,17 +100,12 @@ function NoteEditor({
   const [title, setTitle] = useState(note.title);
   const [body, setBody] = useState(note.body);
 
-  useEffect(() => {
-    setTitle(note.title);
-    setBody(note.body);
-  }, [note._id, note.title, note.body]);
-
   function save() {
     onUpdate({ title, body });
   }
 
   return (
-    <Card className="glass-card border-0 shadow-none">
+      <Card className="mission-section border-0 shadow-none">
       <CardContent className="space-y-4 p-5">
         <div className="flex items-center justify-between gap-2">
           <div className="flex-1 space-y-2">
@@ -126,12 +128,12 @@ function NoteEditor({
             value={body}
             onChange={(e) => setBody(e.target.value)}
             rows={16}
-            className="w-full resize-y rounded-md border border-[var(--glass-border)] bg-surface-container/40 px-3 py-2 font-mono text-sm text-on-surface"
+            className="w-full resize-y rounded-lg border border-[var(--glass-border)] bg-surface-container/40 px-4 py-3 font-mono text-sm leading-relaxed text-on-surface outline-none transition-colors focus:border-secondary/60"
             placeholder="# Nadpis&#10;- myšlenka&#10;- odkaz na koncept"
           />
         </div>
         <Button type="button" onClick={save}>
-          Uložit poznámku
+          Uložit
         </Button>
       </CardContent>
     </Card>

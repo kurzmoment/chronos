@@ -36,14 +36,14 @@ function DialogContent({
       <DialogPrimitive.Content
         className={cn(
           "fixed left-1/2 top-1/2 z-50 w-full max-w-lg -translate-x-1/2 -translate-y-1/2",
-          "surface-elevated rounded-lg border-[0.5px] border-[var(--glass-border)] p-0 shadow-2xl backdrop-blur-xl",
+          "surface-elevated rounded-xl border-[0.5px] border-[var(--glass-border)] p-0 shadow-2xl backdrop-blur-xl",
           "data-[state=open]:animate-in data-[state=closed]:animate-out",
           className
         )}
         {...props}
       >
         {children}
-        <DialogPrimitive.Close className="absolute right-4 top-4 cursor-pointer rounded-sm text-on-surface-variant hover:text-on-surface">
+        <DialogPrimitive.Close className="absolute right-4 top-4 cursor-pointer rounded-md p-1 text-on-surface-variant transition-colors hover:bg-surface-container/70 hover:text-on-surface">
           <X className="h-4 w-4" />
         </DialogPrimitive.Close>
       </DialogPrimitive.Content>
@@ -78,7 +78,7 @@ DialogDescription.displayName = DialogPrimitive.Description.displayName;
 function DialogHeader({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
   return (
     <div
-      className={cn("border-b border-surface-high px-6 py-4", className)}
+      className={cn("border-b border-[var(--glass-border)] px-6 py-4", className)}
       {...props}
     />
   );
@@ -88,7 +88,7 @@ function DialogFooter({ className, ...props }: React.HTMLAttributes<HTMLDivEleme
   return (
     <div
       className={cn(
-        "flex items-center justify-between border-t border-surface-high px-6 py-4",
+        "flex items-center justify-between border-t border-[var(--glass-border)] px-6 py-4",
         className
       )}
       {...props}

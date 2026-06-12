@@ -62,7 +62,7 @@ export function MetricsEngine() {
       <MetricCard label="focus velocity" value={`${focus}%`} icon={Gauge}>
         <div className="mt-4 h-1.5 overflow-hidden rounded-full bg-surface-highest">
           <div
-            className="h-full rounded-full bg-gradient-to-r from-primary-dim to-secondary shadow-[var(--glow-cyan)]"
+            className="h-full rounded-full bg-gradient-to-r from-primary-dim to-secondary"
             style={{ width: `${focus}%` }}
           />
         </div>
