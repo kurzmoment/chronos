@@ -143,7 +143,8 @@ export function DayCalendar() {
             </div>
             <div className="flex items-center gap-3">
               <span className="hidden text-[11px] font-medium text-on-surface-variant sm:inline">
-                {CALENDAR_START_HOUR}:00 – {CALENDAR_END_HOUR}:00
+                {String(CALENDAR_START_HOUR).padStart(2, "0")}:00 –{" "}
+                {String(CALENDAR_END_HOUR).padStart(2, "0")}:00
               </span>
               <Button
                 type="button"
@@ -232,7 +233,7 @@ export function DayCalendar() {
                     <div className="flex items-center gap-2 px-3">
                       <div className="relative flex h-3 w-3 items-center justify-center">
                         <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-secondary/40" />
-                        <span className="relative h-2 w-2 rounded-full bg-secondary shadow-[var(--glow-cyan)]" />
+                        <span className="relative h-2 w-2 rounded-sm bg-secondary" />
                       </div>
                       <div className="h-px flex-1 bg-gradient-to-r from-secondary/70 via-secondary/30 to-transparent" />
                       <span className="rounded-md border border-secondary/30 bg-secondary/10 px-2 py-0.5 font-mono text-[10px] font-semibold text-secondary">

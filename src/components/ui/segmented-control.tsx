@@ -16,7 +16,7 @@ export function SegmentedControl<T extends string>({
   return (
     <div
       className={cn(
-        "flex rounded-sm border border-surface-high bg-surface-lowest p-0.5",
+        "flex rounded-lg border border-[var(--glass-border)] bg-surface-low/60 p-1 backdrop-blur-xl",
         className
       )}
     >
@@ -26,14 +26,14 @@ export function SegmentedControl<T extends string>({
           type="button"
           onClick={() => onChange(opt.value)}
           className={cn(
-            "flex flex-1 items-center justify-center gap-1.5 rounded-sm px-2 py-2 text-xs font-semibold transition-colors",
+            "flex flex-1 items-center justify-center gap-1.5 rounded-md px-2 py-2 text-xs font-semibold transition-all",
             value === opt.value
               ? opt.variant === "critical"
-                ? "bg-red-600 text-white"
+                ? "bg-red-500/80 text-white shadow-[0_0_24px_rgb(248_113_113_/_0.22)]"
                 : opt.variant === "work"
-                  ? "bg-primary text-on-primary"
-                  : "bg-surface-high text-on-surface"
-              : "text-on-surface-variant hover:text-on-surface"
+                  ? "bg-secondary/16 text-secondary"
+                  : "bg-surface-container/80 text-on-surface shadow-[inset_0_1px_0_rgb(255_255_255_/_0.05)]"
+              : "text-on-surface-variant hover:bg-surface-container/45 hover:text-on-surface"
           )}
         >
           {opt.icon}

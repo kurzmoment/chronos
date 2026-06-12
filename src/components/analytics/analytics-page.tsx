@@ -16,17 +16,20 @@ export function AnalyticsPage() {
   const efficiency = useQuery(api.analytics.getDayEfficiency, { date: selectedDate });
 
   return (
-    <AppShell searchPlaceholder="Hledat ve statistikách…">
-      <div className="mb-6">
-        <h1 className="text-xl font-bold text-on-surface">Statistiky</h1>
-        <p className="mt-1 text-body-sm text-on-surface-variant">
-          Grafy z kalendáře a návyků. Úkoly a plán dne spravujte na{" "}
+    <AppShell searchPlaceholder="Filtrovat statistiky…">
+      <div className="mb-6 rounded-xl border border-[var(--glass-border)] bg-surface-container/40 p-5 shadow-[var(--shadow-ambient)] backdrop-blur-2xl">
+        <p className="section-kicker">statistiky</p>
+        <h1 className="mt-1 text-[clamp(2rem,4vw,3.75rem)] font-black leading-none tracking-[-0.06em] text-on-surface">
+          Analytics
+        </h1>
+        <p className="mt-3 max-w-3xl text-body-sm text-on-surface-variant">
+          Grafy z kalendáře a návyků. Úkoly a plán dne spravujte v{" "}
           <Link href="/dashboard" className="text-secondary hover:underline">
-            Přehledu dne
+            Dnešku
           </Link>
           , návyky v sekci{" "}
           <Link href="/habits" className="text-secondary hover:underline">
-            Návyky
+            Habits
           </Link>
           .
         </p>

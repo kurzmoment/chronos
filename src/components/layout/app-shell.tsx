@@ -11,13 +11,13 @@ export function AppShell({
   searchPlaceholder?: string;
 }) {
   return (
-    <div className="grain-overlay flex h-screen flex-col overflow-hidden">
+    <div className="mission-grid flex h-screen flex-col overflow-hidden">
       <div className="flex min-h-0 flex-1">
         <AppSidebar />
         <div className="flex min-w-0 flex-1 flex-col">
           <AppHeader searchPlaceholder={searchPlaceholder} />
-          <main className="min-h-0 flex-1 overflow-y-auto px-6 py-6 md:px-12">
-            <div className="mx-auto max-w-[1440px]">{children}</div>
+          <main className="min-h-0 flex-1 overflow-y-auto px-4 py-5 sm:px-6 lg:px-10">
+            <div className="mx-auto max-w-[1500px]">{children}</div>
           </main>
         </div>
       </div>

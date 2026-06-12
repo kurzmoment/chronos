@@ -12,14 +12,14 @@ export function TaskCard({
 }) {
   const accentBorder =
     accent === "habit"
-      ? "border-l-accent-habit"
-      : taskCardAccentClass[accent];
+      ? "border-accent-habit/25"
+      : taskCardAccentClass[accent].replace("border-l-", "border-");
 
   return (
     <div
       className={cn(
-        "group relative rounded-sm border border-surface-high bg-surface-low px-3 py-2.5",
-        "border-l-[3px] transition-colors hover:bg-surface-container",
+        "group relative rounded-lg border border-[var(--glass-border)] bg-surface-low/75 px-3 py-2.5",
+        "transition-all hover:bg-surface-container/75",
         accentBorder,
         className
       )}

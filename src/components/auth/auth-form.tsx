@@ -60,7 +60,7 @@ export function AuthForm() {
       />
       <Card className="surface-elevated relative w-full max-w-md border-surface-highest">
         <CardHeader className="text-center">
-          <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-lg bg-primary-solid text-xl font-bold text-white shadow-[var(--glow-primary)]">
+          <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-lg bg-primary-solid text-xl font-bold text-white">
             C
           </div>
           <CardTitle className="text-2xl">Chronos</CardTitle>

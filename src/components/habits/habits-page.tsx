@@ -24,25 +24,33 @@ export function HabitsPage() {
   }, [habits, searchQuery]);
 
   return (
-    <AppShell searchPlaceholder="Hledat návyky…">
-      <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
+    <AppShell searchPlaceholder="Filtrovat návyky…">
+      <div className="mb-6 flex flex-wrap items-end justify-between gap-4 rounded-xl border border-[var(--glass-border)] bg-surface-container/40 p-5 shadow-[var(--shadow-ambient)] backdrop-blur-2xl">
         <div>
-          <h1 className="text-xl font-bold text-on-surface">Návyky</h1>
-          <p className="mt-1 text-body-sm text-on-surface-variant">
-            Zaškrtněte splnění pro dnešek. Po optimalizaci dne se návyky objeví v
-            kalendáři na dashboardu.
+          <p className="section-kicker">návyky</p>
+          <h1 className="mt-1 text-[clamp(2rem,4vw,3.75rem)] font-black leading-none tracking-[-0.06em] text-on-surface">
+            Habits
+          </h1>
+          <p className="mt-3 max-w-2xl text-body-sm text-on-surface-variant">
+            Návyky se dají odškrtávat ručně nebo zařadit do denního plánu
+            automaticky podle preferovaného času.
           </p>
         </div>
         <AddHabitForm />
       </div>
 
-      <div className="space-y-3">
+      <div className="grid gap-3 lg:grid-cols-2">
         {filtered.map((habit) => (
-          <Card key={habit._id} className="glass-card border-0 shadow-none">
+          <Card
+            key={habit._id}
+            className="mission-section border-0 shadow-none transition-all hover:bg-surface-container/30"
+          >
             <CardContent className="flex items-center justify-between gap-4 p-4">
               <div className="min-w-0">
-                <p className="font-semibold text-on-surface">{habit.title}</p>
-                <p className="mt-0.5 text-body-sm text-on-surface-variant">
+                <p className="font-bold tracking-[-0.02em] text-on-surface">
+                  {habit.title}
+                </p>
+                <p className="mt-1 text-[10px] font-bold uppercase tracking-[0.12em] text-on-surface-variant">
                   {habit.durationMin} min · {habit.preferredTimeOfDay.toLowerCase()}
                   {habit.currentStreak > 0 && (
                     <span className="ml-2 inline-flex items-center gap-1 text-secondary">
@@ -59,7 +67,7 @@ export function HabitsPage() {
                   onChange={() =>
                     toggleCompletion({ habitId: habit._id, date: selectedDate })
                   }
-                  className="h-4 w-4 rounded border-outline-variant"
+                  className="h-4 w-4 rounded border-outline-variant bg-surface-low text-secondary"
                   aria-label={`Splněno: ${habit.title}`}
                 />
                 <Button
@@ -75,7 +83,7 @@ export function HabitsPage() {
           </Card>
         ))}
         {!filtered.length && (
-          <p className="text-on-surface-variant">
+          <p className="mission-section px-5 py-10 text-center text-on-surface-variant lg:col-span-2">
             {habits?.length
               ? "Žádný návyk neodpovídá hledání."
               : "Zatím žádné návyky — přidejte první výše."}

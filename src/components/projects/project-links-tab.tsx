@@ -33,10 +33,16 @@ export function ProjectLinksTab({ projectId }: { projectId: Id<"projects"> }) {
   }
 
   return (
-    <div className="space-y-6">
-      <Card className="glass-card border-0 shadow-none">
+    <div className="space-y-5">
+      <Card className="mission-section border-0 shadow-none">
         <CardContent className="space-y-4 p-5">
-          <h2 className="text-sm font-semibold text-on-surface">Nový odkaz</h2>
+          <div>
+            <p className="section-kicker">odkazy</p>
+            <h2 className="mt-1 text-title-md text-on-surface">Nový odkaz</h2>
+            <p className="mt-1 text-body-sm text-on-surface-variant">
+              Dokumentace, zdroje a další kontext k projektu.
+            </p>
+          </div>
           <form onSubmit={handleAdd} className="grid gap-3 sm:grid-cols-2">
             <div className="space-y-2">
               <Label>Název</Label>
@@ -64,22 +70,22 @@ export function ProjectLinksTab({ projectId }: { projectId: Id<"projects"> }) {
         </CardContent>
       </Card>
 
-      <ul className="space-y-2">
+      <ul className="grid gap-3 lg:grid-cols-2">
         {links?.map((link) => (
           <li key={link._id}>
-            <Card className="glass-card border-0 shadow-none">
+            <Card className="mission-section border-0 shadow-none transition-all hover:bg-surface-container/30">
               <CardContent className="flex items-start justify-between gap-3 p-4">
                 <div className="min-w-0">
                   <a
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 font-medium text-secondary hover:underline"
+                    className="inline-flex items-center gap-1 font-bold tracking-[-0.02em] text-on-surface hover:text-secondary"
                   >
                     {link.title}
                     <ExternalLink className="h-3.5 w-3.5 shrink-0" />
                   </a>
-                  <p className="truncate text-xs text-on-surface-variant">
+                  <p className="mt-1 truncate text-[10px] font-bold uppercase tracking-[0.12em] text-secondary/85">
                     {link.url}
                   </p>
                   {link.note && (
@@ -100,6 +106,11 @@ export function ProjectLinksTab({ projectId }: { projectId: Id<"projects"> }) {
             </Card>
           </li>
         ))}
+        {links && links.length === 0 && (
+          <li className="mission-section px-5 py-10 text-center text-body-sm text-on-surface-variant lg:col-span-2">
+            Zatím žádné odkazy.
+          </li>
+        )}
       </ul>
     </div>
   );

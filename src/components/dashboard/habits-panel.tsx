@@ -29,7 +29,10 @@ export function HabitsPanel() {
   return (
     <Card className="glass-card flex flex-col border-0 shadow-none">
       <CardHeader className="flex flex-row items-center justify-between py-3">
-        <p className="text-sm font-semibold text-on-surface">Návyky</p>
+          <div>
+            <p className="text-label-caps">návyky</p>
+            <p className="mt-1 text-sm font-semibold text-on-surface">Dnešní návyky</p>
+          </div>
         <span className="text-mono-data text-[10px] font-bold text-secondary">
           {pct}%
         </span>
@@ -38,7 +41,7 @@ export function HabitsPanel() {
         {filtered.map((habit) => (
           <div
             key={habit._id}
-            className="flex items-center justify-between rounded-sm border border-surface-high bg-surface-low px-3 py-2.5"
+            className="flex items-center justify-between rounded-lg border border-surface-high bg-surface-low/75 px-3 py-2.5"
           >
             <div className="flex items-center gap-2 min-w-0">
               <span className="text-lg opacity-80">◎</span>

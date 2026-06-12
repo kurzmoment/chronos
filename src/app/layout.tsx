@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Chronos – System Metrics",
-  description: "Cyber-premium productivity cockpit — schedule, backlog, habits, and performance metrics",
+  description: "Osobní plánovač pro kalendář, projekty, úkoly, návyky a statistiky",
 };
 
 export default function RootLayout({

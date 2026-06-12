@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Select } from "@/components/ui/select";
 
 const LANGUAGES = [
   "typescript",
@@ -53,10 +54,16 @@ export function ProjectSnippetsTab({
   }
 
   return (
-    <div className="space-y-6">
-      <Card className="glass-card border-0 shadow-none">
+    <div className="space-y-5">
+      <Card className="mission-section border-0 shadow-none">
         <CardContent className="space-y-4 p-5">
-          <h2 className="text-sm font-semibold text-on-surface">Nový snippet</h2>
+          <div>
+            <p className="section-kicker">snippety</p>
+            <h2 className="mt-1 text-title-md text-on-surface">Nový snippet</h2>
+            <p className="mt-1 text-body-sm text-on-surface-variant">
+              Malé kusy kódu a poznámky, které se hodí držet u projektu.
+            </p>
+          </div>
           <form onSubmit={handleAdd} className="space-y-3">
             <div className="grid gap-3 sm:grid-cols-2">
               <div className="space-y-2">
@@ -65,17 +72,16 @@ export function ProjectSnippetsTab({
               </div>
               <div className="space-y-2">
                 <Label>Jazyk</Label>
-                <select
+                <Select
                   value={language}
                   onChange={(e) => setLanguage(e.target.value)}
-                  className="flex h-10 w-full rounded-md border border-[var(--glass-border)] bg-surface-container/40 px-3 text-sm"
                 >
                   {LANGUAGES.map((l) => (
                     <option key={l} value={l}>
                       {l}
                     </option>
                   ))}
-                </select>
+                </Select>
               </div>
             </div>
             <div className="space-y-2">
@@ -84,7 +90,7 @@ export function ProjectSnippetsTab({
                 value={code}
                 onChange={(e) => setCode(e.target.value)}
                 rows={8}
-                className="w-full rounded-md border border-[var(--glass-border)] bg-[#0b1326] px-3 py-2 font-mono text-sm text-on-surface"
+                className="w-full rounded-lg border border-[var(--glass-border)] bg-[#050b18]/90 px-4 py-3 font-mono text-sm leading-relaxed text-on-surface outline-none transition-colors focus:border-secondary/60 focus:ring-2 focus:ring-secondary/25"
                 required
               />
             </div>
@@ -96,14 +102,18 @@ export function ProjectSnippetsTab({
         </CardContent>
       </Card>
 
-      <div className="space-y-3">
+      <div className="grid gap-3 xl:grid-cols-2">
         {snippets?.map((s) => (
-          <Card key={s._id} className="glass-card border-0 shadow-none">
+          <Card key={s._id} className="mission-section border-0 shadow-none">
             <CardContent className="p-4">
               <div className="mb-2 flex items-center justify-between">
                 <div>
-                  <p className="font-medium text-on-surface">{s.title}</p>
-                  <p className="text-xs text-on-surface-variant">{s.language}</p>
+                  <p className="font-bold tracking-[-0.02em] text-on-surface">
+                    {s.title}
+                  </p>
+                  <p className="mt-1 text-[10px] font-bold uppercase tracking-[0.14em] text-secondary">
+                    {s.language}
+                  </p>
                 </div>
                 <div className="flex gap-1">
                   <Button
@@ -128,12 +138,17 @@ export function ProjectSnippetsTab({
                   </Button>
                 </div>
               </div>
-              <pre className="max-h-48 overflow-auto rounded-md bg-[#0b1326] p-3 text-xs text-on-surface">
+              <pre className="max-h-56 overflow-auto rounded-lg border border-[var(--glass-border)] bg-[#050b18]/90 p-4 text-xs leading-relaxed text-on-surface">
                 {s.code}
               </pre>
             </CardContent>
           </Card>
         ))}
+        {snippets && snippets.length === 0 && (
+          <div className="mission-section px-5 py-10 text-center text-body-sm text-on-surface-variant xl:col-span-2">
+            Zatím žádné snippety.
+          </div>
+        )}
       </div>
     </div>
   );

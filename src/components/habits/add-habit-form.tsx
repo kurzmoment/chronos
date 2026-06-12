@@ -42,7 +42,7 @@ export function AddHabitForm() {
   }
 
   return (
-    <Card>
+    <Card className="mission-section border-0 shadow-none">
       <CardContent className="pt-4">
         <form onSubmit={handleSubmit} className="space-y-3">
           <div className="space-y-2">
